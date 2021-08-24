@@ -143,7 +143,7 @@
               name="request-title"
               type="text"
               id="request-title"
-              placeholder="e.g. training event for JPMC"
+              placeholder="e.g. training event for ..."
             />
           </div>
         </div>
@@ -304,7 +304,7 @@
           </div>
         </div>
         <hr />
-        <h2>JPMC Information</h2>
+        <h2>Customer's Information</h2>
         <div>Individual you are submitting the request on behalf of?</div>
         <div class="row">
           <div class="col-2"><label for="#SID-input"> SID: </label></div>
@@ -324,13 +324,13 @@
               type="email"
               name="obo-email"
               id="obo-email"
-              placeholder="name.surname@jpmchase.com"
+              placeholder="name.surname@company.com"
             />
           </div>
         </div>
         <br />
         <div class="row">
-          <div class="col-4">JPMC Legal Entity:</div>
+          <div class="col-4">Customer's Legal Entity:</div>
           <div class="col-8">
             <input
               class="form-control"
@@ -348,7 +348,7 @@
             </datalist>
           </div>
         </div>
-        <br />
+        
 
         <div class="row">
           <div class="col-4">Street and building details:</div>
@@ -470,7 +470,7 @@
             value=""
             id="jpmc-contract"
           />
-          <label for="#jpmc-contract"> Valid JPMC Contract </label>
+          <label for="#jpmc-contract"> Valid Contract </label>
         </div>
         <div class="form-check">
           <input
@@ -509,8 +509,9 @@
         <input type="submit" value="Send" class="btn btn-success" />
         <input type="reset" value="Clear" class="btn btn-danger" />
         <br />
+        <br />
         <button class="btn btn-success" type="button" id="save">
-          Save for later
+          Save for later (pending)
         </button>
         <button
           class="btn btn-success"
@@ -518,10 +519,10 @@
           id="submit"
           enctype="text/plain"
         >
-          Submit form
+          Submit test 2
         </button>
 
-        <input type="button" onclick="sendMail();" />
+  
       </form>
     </div>
 
