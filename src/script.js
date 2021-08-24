@@ -117,10 +117,17 @@ function updateGrandTotal() {
   let totalFreight = document.getElementById("total-freight").value;
   let totalVat = document.getElementById("total-vat").value;
   let totalPayment = document.getElementById("total-payment");
+  let totalReceive = document.getElementById("total-receive");
+  let comissionAmount = document.getElementById("comission");
+  let comissionPercent = optionsTree[`${document.getElementById("payment-process").value}`][`comission`]
+  console.log(comissionPercent)
 
-  totalPayment.value = `${
-    parseInt(totalNet) + parseInt(totalFreight) + parseInt(totalVat)
-  } ${document.getElementById("currency").value}`;
+  let totalPaymentAmount = parseInt(totalNet) + parseInt(totalFreight) + parseInt(totalVat)
+  totalPayment.value = `${totalPaymentAmount} ${document.getElementById("currency").value}`;
+  console.log(parseInt(totalPaymentAmount));
+  console.log(parseInt(parseInt(optionsTree[`${document.getElementById("payment-process").value}`][`comission`])));
+  comissionAmount.value = parseInt(totalPaymentAmount) * comissionPercent
+  totalReceive.value = totalPaymentAmount - parseInt(comissionAmount.value)
 }
 
 let optionsExpressPay = {
@@ -131,14 +138,6 @@ let optionsExpressPay = {
   },
 };
 
-const category = document.getElementById("itemCategoryList");
-let categoryOptions = optionsExpressPay.UK.LE;
-
-categoryOptions.forEach(function (item) {
-  var option = document.createElement("option");
-  option.value = item;
-  document.getElementById("itemCategoryListOptions").appendChild(option);
-});
 
 function createOptionsList(options, formElement) {
   formElement.innerHTML = ``;
@@ -168,6 +167,7 @@ function populateDependants() {
   let currency = document.getElementById("currency");
   let shiptoCountry = document.getElementById("shipto-country");
   let legalEntitiesList = document.getElementById("le-options");
+  let comissionAmount = document.getElementById("comission");
 
   console.log(`${paymentProcess} ${purchasingUnit}`)
   let currencyOptions =
@@ -188,6 +188,9 @@ console.log (currencyOptions)
     ];
   shiptoCountry.value = countryOption;
   shiptoCountry.disabled = true;
+
+  let comission = optionsTree[`${paymentProcess}`][`comission`]
+  comissionAmount.placeholder = `${comission*100} %`
 }
 
 // EVENT LISTENERS
@@ -218,6 +221,19 @@ const determinationFields = [
   document.getElementById("purchasing-unit"),
   document.getElementById("payment-process"),
 ];
+
+determinationFields.forEach(function (determinationField) {
+  determinationField.addEventListener("change", function () {
+    if (
+      document.getElementById("purchasing-unit").value !== "" &&
+      document.getElementById("payment-process").value !== ""
+    ) {
+      populateDependants();
+    } else {
+    }
+  });
+});
+
 /*
 
 */
@@ -242,20 +258,8 @@ let formElement = document.getElementById("payment-process")
     placeholderOption.value = "";
     placeholderOption.innerHTML = "Chose...";
   formElement.prepend(placeholderOption)
-placeholderOption.selected = true;
-
-
-determinationFields.forEach(function (determinationField) {
-  determinationField.addEventListener("change", function () {
-    if (
-      document.getElementById("purchasing-unit").value !== "" &&
-      document.getElementById("payment-process").value !== ""
-    ) {
-      populateDependants();
-    } else {
-    }
-  });
-});}
+  placeholderOption.selected = true;
+  }
 
 
   if (
@@ -265,7 +269,6 @@ determinationFields.forEach(function (determinationField) {
     } else {
     }
 });
-
 
 
 // SOURCE & DETERMINATION OBJECTS
@@ -314,3 +317,14 @@ const optionsTree = {
     },
   },
 };
+
+/*
+const category = document.getElementById("itemCategoryList");
+let categoryOptions;
+
+categoryOptions.forEach(function (item) {
+  var option = document.createElement("option");
+  option.value = item;
+  document.getElementById("itemCategoryListOptions").appendChild(option);
+});
+*/

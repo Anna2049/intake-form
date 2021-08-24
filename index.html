@@ -171,6 +171,30 @@
           </div>
         </div>
 
+     
+        <div class="row">
+          <div class="col-6">Supplier confirmed acceptance of comission?</div>
+          <div class="col-2">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="comission-accept"
+              id="comission-accept-yes"
+              value="yes"
+            /><label for="#comission-accept-yes">Yes</label>
+          </div>
+          <div class="col-2">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="comission-accept"
+              id="comission-accept-no"
+              value="no"
+            />
+            <label for="#comission-accept-no">No</label>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-6">Supplier's method of Credit Card acceptance</div>
           <div class="col-6">
@@ -184,8 +208,8 @@
         </div>
 
         <div class="row">
-          <div class="col-4">Supplier legal entity name:</div>
-          <div class="col-8">
+          <div class="col-6">Supplier legal entity name:</div>
+          <div class="col-6">
             <input
               class="form-control"
               name="supplier-name"
@@ -197,38 +221,137 @@
         </div>
 
         <div class="row">
-          <div class="col-4">Supplier Country:</div>
+          <div class="col-2">Supplier Country:</div>
           <div class="col-4">
-            <select
+            <input
               class="form-control"
               name="supplier-country"
               id="supplier-country"
+              list="countries"
+              autocomplete="off"
             >
-              <option></option>
+            <datalist id="countries">
               <option>United Kingdom</option>
+              <option>United States</option>
               <option>Singapore</option>
-              <option>Option 3</option>
-              <option>Option 4</option>
-              <option>Option 5</option>
-            </select>
+              <option>Mexico</option>
+            </datalist>
           </div>
           <div class="col-2">
             Currency:
-            <i
-              class="far fa-question-circle"
-              type="button"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Tooltip on currency"
-            ></i>
           </div>
-
-          <div class="col-2">
+          <div class="col-4">
             <select class="form-control" name="currency" id="currency">
               
             </select>
           </div>
         </div>
+
+        <br>
+
+
+        <div class="row">
+          <div class="col-2">Contact person:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="contact-name"
+              type="text"
+              id="contact-name"
+              placeholder="Name Surname"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col-2">Contact email:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="contact-email"
+              type="text"
+              id="contact-email"
+              placeholder="emailaddress@company.com"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">Contact tel.:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="contact-name"
+              id="contact-name"
+              type="tel"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col-2">Website:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="contact-email"
+              type="text"
+              id="contact-email"
+              placeholder="www..."
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+<br>
+        <div class="row">
+          <div class="col-2">Invoice No.:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="invoice-number"
+              id="invoice-number"
+              autocomplete="off"
+            >
+          </div>
+          <div class="col-2">Sales Order: <i class="far fa-question-circle" id="tip"
+              ><span class="tooltiptext"
+                ><strong>Supplier</strong>'s sales order #,<br /> if available as per invoice</span
+              ></i></div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="invoice-number"
+              id="invoice-number"
+              autocomplete="off"
+            >
+          </div>
+        </div>  
+
+        <div class="row">
+          <div class="col-2">Invoice Issued:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="invoice-date-issue"
+              id="invoice-date-issue"
+              placeholder="mm/dd/yyyy"
+              autocomplete="off"
+            >
+          </div>
+          <div class="col-2">Invoice Received:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              name="invoice-date-received"
+              id="invoice-date-received"
+              placeholder="mm/dd/yyyy"
+              autocomplete="off"
+            >
+          </div>
+        </div>  
+
+        <br>
+
+
+
+        
 
         <!--          
           <div class="col-2">
@@ -241,6 +364,54 @@
             </select>
           </div>
         -->
+        <hr />
+        <h2>Description of Goods or Services</h2>
+
+        <div class="row">
+          <div class="col-4">Brief description of goods / service:</div>
+          <div class="col-8">
+            <input
+              class="form-control"
+              name="brief-description"
+              type="text"
+              id="brief-description"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">Item category and commodity:</div>
+          <div class="col-8">
+            <input
+              class="form-control"
+              name="category-and-commodity"
+              id="category-and-commodity"
+              list = "itemCategoryCommodityOptions"
+              placeholder="Start typying here..."
+              autocomplete="off"
+            />
+              <datalist id="itemCategoryCommodityOptions">
+                <option value="Category1 || Item 1"></option>
+                <option value="Category1 || Item 2"></option>
+                <option value="Category1 || Item 3"></option>
+                <option value="Category1 || Item 4"></option>
+                <option value="Category2 || Item 1"></option>
+                <option value="Category2 || Item 2"></option>
+                <option value="Category2 || Item 3"></option>
+                <option value="Category3 || Item 1"></option>
+                <option value="Category4 || Item 1"></option>
+              </datalist>
+          </div>
+        </div>
+
+        <br>
+
+        <div>Cost Center</div>
+        <div>Cost Center Split</div>
+        <div>+ Add Cost Center</div>
+
+        <br>
+        
         <div class="row">
           <div class="col-2">
             <label for="#total-net"> Net Amount: </label>
@@ -278,8 +449,12 @@
             />
           </div>
         </div>
+
+                <hr />
+        <h2>Payment summary (readable only):</h2>
+
         <div class="row">
-          <div class="col-4">Your supplier will receive:</div>
+          <div class="col-4">Total payment to be settled:</div>
           <div class="col-4 reference">
             <input
               class="form-control"
@@ -288,7 +463,24 @@
               disabled
             />
           </div>
-          <div class="col-2">Comission:</div>
+        </div>
+
+
+         <div class="row">
+          <div class="col-4">Your supplier will receive:</div>
+          <div class="col-4 reference">
+            <input
+              class="form-control"
+              name="total-receive"
+              id="total-receive"
+              disabled
+            />
+          </div>
+          <div class="col-2">Comission: <i class="far fa-question-circle" id="tip"
+              ><span class="tooltiptext"
+                >ExpressPay - 0 % <br />Candex - 3 %</span
+              ></i>
+            </div>
           <div class="col-2 reference">
             <input
               class="form-control"
@@ -319,7 +511,7 @@
               type="email"
               name="obo-email"
               id="obo-email"
-              placeholder="name.surname@company.com"
+              placeholder="emailaddress@company.com"
             />
           </div>
         </div>
@@ -402,35 +594,7 @@
           <div class="col-2"></div>
         </div>
         <hr />
-        <h2>Description of Goods or Service</h2>
-        <input
-          class="form-control"
-          type="text"
-          id="description-input"
-          placeholder="e.g. Training session"
-        />
 
-        <div>Cost Center</div>
-        <div>Cost Center Split</div>
-        <div>+ Add Cost Center</div>
-
-        <label for="itemCategoryList" class="form-label">Category: </label>
-        <input
-          class="form-control"
-          list="itemCategoryListOptions"
-          id="itemCategoryList"
-          placeholder="Type to search..."
-        />
-        <datalist id="itemCategoryListOptions">
-          <option value="Category1"></option>
-          <option value="Category2"></option>
-          <option value="Category3"></option>
-          <option value="Category4"></option>
-          <option value="Category5"></option>
-        </datalist>
-
-        <div>Commodity Code</div>
-        <hr />
         <h2>Additional Information</h2>
 
         <div>Would you like to add a Watcher to this request?</div>
