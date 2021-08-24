@@ -274,7 +274,7 @@ let formElement = document.getElementById("payment-process")
 // SOURCE & DETERMINATION OBJECTS
 
 const processesByPU = {
-  SAP: [{ value: `candex`, name: `Candex (PO)` }],
+  SAP: [{ value: `candex`, name: `Candex (PO)` },{ value: `express_pay`, name: `ExpressPay (PO)`}],
   SAPGB: [{ value: `express_pay`, name: `ExpressPay (non PO)`},{ value: `candex`, name: `Candex (PO)`}],
   SAPMX: [{ value: `candex`, name: `Candex (PO)` }],
   SAPSG: [{ value: `candex`, name: `Candex (PO)` }],
