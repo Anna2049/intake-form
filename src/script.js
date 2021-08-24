@@ -247,7 +247,13 @@ let formElement = document.getElementById("payment-process")
   if (formElement.options.length === 1) {
     formElement[0].selected = true;
     formElement.disabled = true;
-  }
+  }else {formElement.disabled = false;
+    var placeholderOption = document.createElement("option");
+    placeholderOption.value = "";
+    placeholderOption.innerHTML = "Chose...";
+  formElement.prepend(placeholderOption)
+placeholderOption.selected = true}
+
 
   if (
       document.getElementById("purchasing-unit").value !== "" && 
@@ -263,7 +269,7 @@ let formElement = document.getElementById("payment-process")
 
 const processesByPU = {
   SAP: [{ value: `candex`, name: `Candex (PO)` }],
-  SAPGB: [{ value: `express_pay`, name: `ExpressPay (non PO)` }],
+  SAPGB: [{ value: `express_pay`, name: `ExpressPay (non PO)`},{ value: `candex`, name: `Candex (PO)`}],
   SAPMX: [{ value: `candex`, name: `Candex (PO)` }],
   SAPSG: [{ value: `candex`, name: `Candex (PO)` }],
 };
@@ -286,6 +292,11 @@ const optionsTree = {
         country: "United States",
         currencies: ["USD"],
         legal_entities: ["US LE 1", "US LE 2", "US LE 3", "US LE 4", "US LE 5"],
+      },
+      SAPGB: {
+        country: "United Kingdom",
+        currencies: ["GBP"],
+        legal_entities: ["UK LE 1", "UK LE 2", "UK LE 3", "UK LE 4", "UK LE 5"],
       },
       SAPMX: {
         country: "Mexico",
