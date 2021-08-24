@@ -80,3 +80,13 @@ select option[value="placeholder"] {
   vertical-align: middle;
 }
 */
+.candex, .express-pay, .express-pay-us {display: none;}
+
+.alert {width: 100%; 
+  text-align: center;
+  color: navy;
+  font-weight: bolder;
+  margin:0 auto;
+  padding:0;}
+
+.alert-parent {padding:40px 0 70px 0}

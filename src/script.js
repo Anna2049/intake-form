@@ -191,8 +191,44 @@ console.log (currencyOptions)
 
   let comission = optionsTree[`${paymentProcess}`][`comission`]
   comissionAmount.placeholder = `${comission*100} %`
+ 
 }
 
+function makeVisible (elements) {     
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].setAttribute(
+        `style`,
+        `display: flex;`
+      );
+    }}
+
+function makeInvisible (elements) {     
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].setAttribute(
+        `style`,
+        `display: none;`
+      );
+    }}
+
+function verifyVisibilityOfFields () {
+     if (document.getElementById("payment-process").value === "") {
+      makeInvisible(fieldsSpecificCandex);
+      makeInvisible(fieldsSpecificEpay);
+      makeInvisible(fieldsSpecificEpayUS)}
+   else if (document.getElementById("payment-process").value === "candex") {
+      makeVisible(fieldsSpecificCandex);
+      makeInvisible(fieldsSpecificEpay);
+      makeInvisible(fieldsSpecificEpayUS)}
+   else if (document.getElementById("payment-process").value === "express_pay") {
+      makeInvisible(fieldsSpecificCandex);
+      makeVisible(fieldsSpecificEpay);
+      makeInvisible(fieldsSpecificEpayUS)}
+    else if (document.getElementById("payment-process").value === "express_pay_us") {
+      makeInvisible(fieldsSpecificCandex);
+      makeInvisible(fieldsSpecificEpay);
+      makeVisible(fieldsSpecificEpayUS)} 
+    else {alert("Hello") }
+}
 // EVENT LISTENERS
 
 let radiosTeamRedirected = document.getElementsByName("setup-team-redirected");
@@ -225,18 +261,28 @@ const determinationFields = [
 determinationFields.forEach(function (determinationField) {
   determinationField.addEventListener("change", function () {
     if (
+      document.getElementById("purchasing-unit").value === "SAP" &&
+      document.getElementById("payment-process").value === "express_pay_us"
+    ) {
+      verifyVisibilityOfFields();
+    }
+    else if (
       document.getElementById("purchasing-unit").value !== "" &&
       document.getElementById("payment-process").value !== ""
     ) {
       populateDependants();
-    } else {
+      verifyVisibilityOfFields();
     }
+    else {verifyVisibilityOfFields();}
   });
 });
 
+const fieldsSpecificEpay = document.getElementsByClassName("express-pay")
+const fieldsSpecificCandex = document.getElementsByClassName("candex")
+const fieldsSpecificEpayUS = document.getElementsByClassName("express-pay-us")
 /*
-
 */
+
 let purchasingUnitOptions = document.getElementById("purchasing-unit");
 
 purchasingUnitOptions.addEventListener("change", function(event) {
@@ -253,12 +299,15 @@ let formElement = document.getElementById("payment-process")
   if (formElement.options.length === 1) {
     formElement[0].selected = true;
     formElement.disabled = true;
+    verifyVisibilityOfFields();
   }else {formElement.disabled = false;
     var placeholderOption = document.createElement("option");
     placeholderOption.value = "";
-    placeholderOption.innerHTML = "Chose...";
+    placeholderOption.innerHTML = "Choose...";
   formElement.prepend(placeholderOption)
   placeholderOption.selected = true;
+
+  verifyVisibilityOfFields();
   }
 
 
@@ -274,7 +323,7 @@ let formElement = document.getElementById("payment-process")
 // SOURCE & DETERMINATION OBJECTS
 
 const processesByPU = {
-  SAP: [{ value: `candex`, name: `Candex (PO)` },{ value: `express_pay`, name: `ExpressPay (PO)`}],
+  SAP: [{ value: `candex`, name: `Candex (PO)` },{ value: `express_pay_us`, name: `ExpressPay (PO)`}],
   SAPGB: [{ value: `express_pay`, name: `ExpressPay (non PO)`},{ value: `candex`, name: `Candex (PO)`}],
   SAPMX: [{ value: `candex`, name: `Candex (PO)` }],
   SAPSG: [{ value: `candex`, name: `Candex (PO)` }],
