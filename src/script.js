@@ -214,22 +214,12 @@ totalPaymentComponents.forEach(function (paymentComponent) {
   paymentComponent.addEventListener("change", updateGrandTotal);
 });
 
-/*
 const determinationFields = [
   document.getElementById("purchasing-unit"),
   document.getElementById("payment-process"),
 ];
-determinationFields.forEach(function (determinationField) {
-  determinationField.addEventListener("change", function () {
-    if (
-      document.getElementById("purchasing-unit").value !== "" &&
-      document.getElementById("payment-process").value !== ""
-    ) {
-      populateDependants();
-    } else {
-    }
-  });
-});
+/*
+
 */
 let purchasingUnitOptions = document.getElementById("purchasing-unit");
 
@@ -252,7 +242,20 @@ let formElement = document.getElementById("payment-process")
     placeholderOption.value = "";
     placeholderOption.innerHTML = "Chose...";
   formElement.prepend(placeholderOption)
-placeholderOption.selected = true}
+placeholderOption.selected = true;
+
+
+determinationFields.forEach(function (determinationField) {
+  determinationField.addEventListener("change", function () {
+    if (
+      document.getElementById("purchasing-unit").value !== "" &&
+      document.getElementById("payment-process").value !== ""
+    ) {
+      populateDependants();
+    } else {
+    }
+  });
+});}
 
 
   if (
