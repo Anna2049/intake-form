@@ -152,7 +152,12 @@ function createOptionsList(options, formElement) {
     //formElement[0].setAttribute(`selected`, `true`);
     formElement[0].selected = true;
     formElement.disabled = true;
-  }
+  } else {formElement.disabled = false;
+    var placeholderOption = document.createElement("option");
+    placeholderOption.value = "";
+    placeholderOption.innerHTML = "Chose...";
+  formElement.prepend(placeholderOption)
+placeholderOption.selected = true}
 }
 
 function populateDependants() {
@@ -164,11 +169,12 @@ function populateDependants() {
   let shiptoCountry = document.getElementById("shipto-country");
   let legalEntitiesList = document.getElementById("le-options");
 
+  console.log(`${paymentProcess} ${purchasingUnit}`)
   let currencyOptions =
     optionsTree[`${paymentProcess}`][`purchasing_units`][`${purchasingUnit}`][
       `currencies`
     ];
-
+console.log (currencyOptions)
   let legalEntitiesOptions =
     optionsTree[`${paymentProcess}`][`purchasing_units`][`${purchasingUnit}`][
       `legal_entities`
@@ -208,6 +214,7 @@ totalPaymentComponents.forEach(function (paymentComponent) {
   paymentComponent.addEventListener("change", updateGrandTotal);
 });
 
+/*
 const determinationFields = [
   document.getElementById("purchasing-unit"),
   document.getElementById("payment-process"),
@@ -223,9 +230,34 @@ determinationFields.forEach(function (determinationField) {
     }
   });
 });
-
+*/
 let purchasingUnitOptions = document.getElementById("purchasing-unit");
-let purchasingUnitSelected = document.getElementById("purchasing-unit").value;
+
+purchasingUnitOptions.addEventListener("change", function(event) {
+  x = processesByPU[`${event.target.value}`]
+  console.log(x)
+let formElement = document.getElementById("payment-process")
+  formElement.innerHTML = ``;
+  x.forEach(function (item) {
+    var option = document.createElement("option");
+    option.value = item.value;
+    option.innerHTML = item.name;
+    formElement.appendChild(option);
+  });
+  if (formElement.options.length === 1) {
+    formElement[0].selected = true;
+    formElement.disabled = true;
+  }
+
+  if (
+      document.getElementById("purchasing-unit").value !== "" && 
+      document.getElementById("payment-process").options.length === 1) {
+      populateDependants();
+    } else {
+    }
+});
+
+
 
 // SOURCE & DETERMINATION OBJECTS
 
@@ -257,7 +289,7 @@ const optionsTree = {
       },
       SAPMX: {
         country: "Mexico",
-        currencies: ["USD"],
+        currencies: ["MXN","USD"],
         legal_entities: ["MX LE 1", "MX LE 2", "MX LE 3", "MX LE 4", "MX LE 5"],
       },
       SAPSG: {
