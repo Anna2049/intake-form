@@ -361,13 +361,26 @@
         </div>
 
         <hr />
+
         <div class="row">
-          <div class="col-2">Invoice No.:<span class="required"> *</span></div>
+          <div class="col-2">
+            Document type:<span class="required"> *</span>
+          </div>
+          <div class="col-4">
+            <select
+              class="form-select"
+              name="document-type"
+              id="document-type"
+            ></select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">Document No.:<span class="required"> *</span></div>
           <div class="col-4">
             <input
               class="form-control"
-              name="invoice-number"
-              id="invoice-number"
+              name="document-number"
+              id="document-number"
               autocomplete="off"
             />
           </div>
@@ -389,24 +402,22 @@
             />
           </div>
 
-          <div class="col-2">
-            Invoice Issued:<span class="required"> *</span>
-          </div>
+          <div class="col-2">Doc. Issued:<span class="required"> *</span></div>
           <div class="col-4">
             <input
               class="form-control"
-              name="invoice-date-issued"
-              id="invoice-date-issued"
+              name="document-date-issued"
+              id="document-date-issued"
               placeholder="mm/dd/yyyy"
               autocomplete="off"
             />
           </div>
-          <div class="col-2 express-pay">Invoice Received:</div>
+          <div class="col-2 express-pay">Doc. Received:</div>
           <div class="col-4 express-pay">
             <input
               class="form-control"
-              name="invoice-date-received"
-              id="invoice-date-received"
+              name="document-date-received"
+              id="document-date-received"
               placeholder="mm/dd/yyyy"
               autocomplete="off"
             />

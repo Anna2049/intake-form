@@ -59,20 +59,24 @@ try {
       document.getElementById("contact-website").value
     );
     localStorage.setItem(
-      "invoiceNumber",
-      document.getElementById("invoice-number").value
+      "docType",
+      document.getElementById("document-type").value
+    );
+    localStorage.setItem(
+      "docNumber",
+      document.getElementById("document-number").value
     );
     localStorage.setItem(
       "salesOrder",
       document.getElementById("sales-order-number").value
     );
     localStorage.setItem(
-      "invDateIssued",
-      document.getElementById("invoice-date-issued").value
+      "docDateIssued",
+      document.getElementById("document-date-issued").value
     );
     localStorage.setItem(
-      "invDateReceived",
-      document.getElementById("invoice-date-received").value
+      "docDateReceived",
+      document.getElementById("document-date-received").value
     );
 
     localStorage.setItem(
@@ -251,7 +255,7 @@ function createOptionsList(options, formElement) {
     formElement.disabled = false;
     var placeholderOption = document.createElement("option");
     placeholderOption.value = "";
-    placeholderOption.innerHTML = "Chose...";
+    placeholderOption.innerHTML = "Choose...";
     formElement.prepend(placeholderOption);
     placeholderOption.selected = true;
   }
@@ -271,16 +275,19 @@ function populateDeterminationFieldsDependants() {
   let legalEntitiesList = document.getElementById("le-options");
   let costCenterList = document.getElementById("cc-options");
   let comissionAmount = document.getElementById("comission");
-
-  console.log(`${paymentProcess} ${purchasingUnit}`);
+  let docType = document.getElementById("document-type");
+  let docTypeOptions =
+    paymentProcessDetails[`${paymentProcess}`][`purchasing_units`][
+      `${purchasingUnit}`
+    ][`docs_accepted`];
   let currencyOptions =
     paymentProcessDetails[`${paymentProcess}`][`purchasing_units`][
       `${purchasingUnit}`
     ][`currencies`];
-  console.log(currencyOptions);
   let legalEntitiesOptions =
     processesByPU[`${purchasingUnit}`][`legal_entities`];
 
+  createOptionsList(docTypeOptions, docType);
   createOptionsList(currencyOptions, currency);
   createOptionsList(legalEntitiesOptions, legalEntitiesList);
   let countryOption = processesByPU[`${purchasingUnit}`][`country`];
@@ -518,6 +525,7 @@ const paymentProcessDetails = {
     purchasing_units: {
       SAPGB: {
         currencies: ["GBP"],
+        docs_accepted: ["Invoice", "Quotation"],
       },
     },
   },
@@ -526,15 +534,19 @@ const paymentProcessDetails = {
     purchasing_units: {
       SAP: {
         currencies: ["USD"],
+        docs_accepted: ["Invoice", "Quotation"],
       },
       SAPGB: {
         currencies: ["GBP", "EUR"],
+        docs_accepted: ["Invoice", "Quotation"],
       },
       SAPMX: {
         currencies: ["MXN"],
+        docs_accepted: ["Quotation"],
       },
       SAPSG: {
         currencies: ["SGD"],
+        docs_accepted: ["Invoice", "Quotation"],
       },
     },
   },
