@@ -537,7 +537,7 @@
             <select
               class="form-select"
               name="cost-center-details"
-              id="cost-center-details"
+              id="cc-options"
             ></select>
           </div>
         </div>
@@ -653,6 +653,47 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-2">City:<span class="required"> *</span></div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              type="text"
+              name="shipto-city"
+              id="shipto-city"
+            />
+          </div>
+          <div class="col-2">PO Box / ZIP:<span class="required"> *</span></div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              type="text"
+              name="shipto-zipcode"
+              id="shipto-zipcode"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">Country:<span class="required"> *</span></div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              type="text"
+              name="shipto-country"
+              id="shipto-country"
+            />
+          </div>
+          <div class="col-2">State:</div>
+          <div class="col-4">
+            <input
+              class="form-control"
+              type="text"
+              name="shipto-state"
+              id="shipto-state"
+            />
+          </div>
+        </div>
+
         <hr />
 
         <h2>Additional Information</h2>
@@ -689,9 +730,9 @@
           <div class="col-6">
             <input
               class="form-control"
-              name="case"
+              name="watchers-SIDs"
               type="text"
-              id="case"
+              id="watchers-SIDs"
               placeholder="A123456, B123456, C123456"
             />
           </div>

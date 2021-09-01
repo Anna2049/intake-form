@@ -179,6 +179,7 @@ function populateDeterminationFieldsDependants() {
   let currency = document.getElementById("currency");
   let shiptoCountry = document.getElementById("shipto-country");
   let legalEntitiesList = document.getElementById("le-options");
+  let costCenterList = document.getElementById("cc-options");
   let comissionAmount = document.getElementById("comission");
 
   console.log(`${paymentProcess} ${purchasingUnit}`);
@@ -188,21 +189,19 @@ function populateDeterminationFieldsDependants() {
     ];
   console.log(currencyOptions);
   let legalEntitiesOptions =
-    optionsTree[`${paymentProcess}`][`purchasing_units`][`${purchasingUnit}`][
-      `legal_entities`
-    ];
+    processesByPU[`${purchasingUnit}`][`legal_entities`];
 
   createOptionsList(currencyOptions, currency);
   createOptionsList(legalEntitiesOptions, legalEntitiesList);
-  let countryOption =
-    optionsTree[`${paymentProcess}`][`purchasing_units`][`${purchasingUnit}`][
-      `country`
-    ];
+  let countryOption = processesByPU[`${purchasingUnit}`][`country`];
   shiptoCountry.value = countryOption;
   shiptoCountry.disabled = true;
 
   let comission = optionsTree[`${paymentProcess}`][`comission`];
   comissionAmount.placeholder = `${comission * 100} %`;
+
+  let costCenterOptions = processesByPU[`${purchasingUnit}`][`cost_centers`];
+  createOptionsList(costCenterOptions, costCenterList);
 }
 
 function makeVisible(elements) {
@@ -315,7 +314,7 @@ const fieldsSpecificEpayUS = document.getElementsByClassName("express-pay-us");
 let purchasingUnitOptions = document.getElementById("purchasing-unit");
 
 purchasingUnitOptions.addEventListener("change", function (event) {
-  x = processesByPU[`${event.target.value}`];
+  x = processesByPU[`${event.target.value}`][`processes`];
   console.log(x);
   let formElement = document.getElementById("payment-process");
   formElement.innerHTML = ``;
@@ -347,16 +346,84 @@ purchasingUnitOptions.addEventListener("change", function (event) {
 // SOURCE & DETERMINATION OBJECTS
 
 const processesByPU = {
-  SAP: [
-    { value: `candex`, name: `Candex (PO)` },
-    { value: `express_pay_us`, name: `ExpressPay (PO)` },
-  ],
-  SAPGB: [
-    { value: `express_pay`, name: `ExpressPay (non PO)` },
-    { value: `candex`, name: `Candex (PO)` },
-  ],
-  SAPMX: [{ value: `candex`, name: `Candex (PO)` }],
-  SAPSG: [{ value: `candex`, name: `Candex (PO)` }],
+  SAP: {
+    country: "United States",
+    processes: [
+      { value: `candex`, name: `Candex (PO)` },
+      { value: `express_pay_us`, name: `ExpressPay (PO)` },
+    ],
+    legal_entities: [
+      "United States LE 1",
+      "United States LE 2",
+      "United States LE 3",
+      "United States LE 4",
+      "United States LE 5",
+    ],
+    cost_centers: [
+      "United States CC 1",
+      "United States CC 2",
+      "United States CC 3",
+      "United States CC 4",
+      "United States CC 5",
+    ],
+  },
+  SAPGB: {
+    country: "United Kingdom",
+    processes: [
+      { value: `express_pay`, name: `ExpressPay (non PO)` },
+      { value: `candex`, name: `Candex (PO)` },
+    ],
+    legal_entities: [
+      "United Kingdom LE 1",
+      "United Kingdom LE 2",
+      "United Kingdom LE 3",
+      "United Kingdom LE 4",
+      "United Kingdom LE 5",
+    ],
+    cost_centers: [
+      "United Kingdom CC 1",
+      "United Kingdom CC 2",
+      "United Kingdom CC 3",
+      "United Kingdom CC 4",
+      "United Kingdom CC 5",
+    ],
+  },
+  SAPMX: {
+    country: "Mexico",
+    processes: [{ value: `candex`, name: `Candex (PO)` }],
+    legal_entities: [
+      "Mexico LE 1",
+      "Mexico LE 2",
+      "Mexico LE 3",
+      "Mexico LE 4",
+      "Mexico LE 5",
+    ],
+    cost_centers: [
+      "Mexico CC 1",
+      "Mexico CC 2",
+      "Mexico CC 3",
+      "Mexico CC 4",
+      "Mexico CC 5",
+    ],
+  },
+  SAPSG: {
+    country: "Singapore",
+    processes: [{ value: `candex`, name: `Candex (PO)` }],
+    legal_entities: [
+      "Singapore LE 1",
+      "Singapore LE 2",
+      "Singapore LE 3",
+      "Singapore LE 4",
+      "Singapore LE 5",
+    ],
+    cost_centers: [
+      "Singapore CC 1",
+      "Singapore CC 2",
+      "Singapore CC 3",
+      "Singapore CC 4",
+      "Singapore CC 5",
+    ],
+  },
 };
 
 const optionsTree = {
@@ -386,7 +453,7 @@ const optionsTree = {
       },
       SAPMX: {
         country: "Mexico",
-        currencies: ["MXN", "USD"],
+        currencies: ["MXN"],
         legal_entities: ["MX LE 1", "MX LE 2", "MX LE 3", "MX LE 4", "MX LE 5"],
       },
       SAPSG: {
