@@ -256,6 +256,22 @@ for (var i = 0; i < radiosTeamRedirected.length; i++) {
   };
 }
 
+// WORKING HERE
+
+/*
+let radiosCostCenterSplit = document.getElementsByName("cost-center-split");
+for (var i = 0; i < radiosCostCenterSplit.length; i++) {
+  radiosTeamRedirected[i].onclick = function () {
+    if (document.getElementById("cost-center-split").checked) {
+      document.getElementById("cc-split-quantity").style.display = "flex";
+    } else if (document.getElementById("cost-center-split-yes").checked) {
+      document.getElementById("cc-split-quantity").style.display = "none";
+    } else {
+    }
+  };
+}
+*/
+
 const totalPaymentComponents = [
   document.getElementById("currency"),
   document.getElementById("total-net"),
@@ -351,6 +367,7 @@ const optionsTree = {
         country: "United Kingdom",
         currencies: ["GBP"],
         legal_entities: ["UK LE 1", "UK LE 2", "UK LE 3", "UK LE 4", "UK LE 5"],
+        //cost_centers: ["UK CC 1", "UK CC 2", "UK CC 3", "UK CC 4", "UK CC 5"],
       },
     },
   },

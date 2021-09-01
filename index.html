@@ -405,7 +405,7 @@
 
         <hr />
 
-        <h2>Description of Goods or Services</h2>
+        <h2>Description of Goods or Services & Accounting Details</h2>
 
         <div class="row">
           <div class="col-4">
@@ -450,12 +450,6 @@
             </datalist>
           </div>
         </div>
-
-        <br />
-
-        <div>Cost Center</div>
-        <div>Cost Center Split</div>
-        <div>+ Add Cost Center</div>
 
         <br />
 
@@ -510,7 +504,43 @@
             />
           </div>
         </div>
+        <br />
 
+        <div class="row">
+          <div class="col-4">I would like to allocate the amount...</div>
+          <div class="col-4">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="cost-center-split"
+              id="cost-center-split-no"
+              value="no"
+              checked
+            /><label for="#cost-center-split-no"
+              >100% to a single cost-center</label
+            >
+          </div>
+          <div class="col-4">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="cost-center-split"
+              id="cost-center-split-yes"
+              value="yes"
+            />
+            <label for="#cost-center-split-yes">apply split accounting</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">Business Unit:</div>
+          <div class="col-8">
+            <select
+              class="form-select"
+              name="cost-center-details"
+              id="cost-center-details"
+            ></select>
+          </div>
+        </div>
         <hr />
         <h2>Payment summary (readable only):</h2>
 
