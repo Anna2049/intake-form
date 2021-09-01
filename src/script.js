@@ -528,7 +528,7 @@ const paymentProcessDetails = {
         currencies: ["USD"],
       },
       SAPGB: {
-        currencies: ["GBP"],
+        currencies: ["GBP", "EUR"],
       },
       SAPMX: {
         currencies: ["MXN"],
