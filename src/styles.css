@@ -2,10 +2,11 @@ body {
   background-color: lightcyan;
   font-family: "Roboto Condensed", sans-serif;
   line-height: 2.2rem;
+  vertical-align: middle;
 }
 .form-body {
   margin: 40px auto;
-  width: 850px;
+  width: 900px;
   border: solid 2px #81a3bd;
   border-radius: 10px;
   box-shadow: 8px -7px 8px rgb(128 128 128 / 46%);
@@ -24,19 +25,29 @@ h2 {
 }
 
 .form-control {
-  padding: 0 0.75rem;
+  padding: 2px 5px;
+  box-shadow: 2px -1px 2px rgb(125, 171, 255);
+  border: 1px solid #7b7d80;
+  vertical-align: middle;
+}
+
+.form-select {
+  padding: 2px 30px 2px 5px;
   box-shadow: 2px -1px 2px rgb(125, 171, 255);
   border: 1px solid #7b7d80;
 }
+/*
+
 .form-control:focus {
   box-shadow: 0 0 10px #5a7ef7;
   border: 1px solid #090b0e;
 }
-/*
+
 .form-control:focus {
   box-shadow: 0 0 15px #284ef7;
 }
 */
+.form-select:disabled,
 .form-control:disabled,
 .form-control[readonly] {
   background-color: rgba(211, 211, 211, 0.4);
@@ -69,6 +80,7 @@ div .row {
 .form-check-input {
   vertical-align: middle;
   margin-top: 0;
+  margin-right: 5px;
 }
 
 select option[value="placeholder"] {
@@ -80,13 +92,39 @@ select option[value="placeholder"] {
   vertical-align: middle;
 }
 */
-.candex, .express-pay, .express-pay-us {display: none;}
+.candex,
+.express-pay,
+.express-pay-us {
+  display: none;
+}
 
-.alert {width: 100%; 
+.alert {
+  width: 100%;
   text-align: center;
   color: navy;
   font-weight: bolder;
-  margin:0 auto;
-  padding:0;}
+  margin: 0 auto;
+  padding: 0;
+}
 
-.alert-parent {padding:40px 0 70px 0}
+.alert-parent {
+  padding: 40px 0 70px 0;
+}
+
+input {
+  margin: 0;
+  padding: 0;
+}
+
+.country-code {
+  font-size: smaller;
+  color: grey;
+}
+.row > div {
+  line-height: 1.5;
+  margin-top: 5px;
+}
+.required {
+  font-weight: bold;
+  color: red;
+}

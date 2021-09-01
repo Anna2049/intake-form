@@ -41,8 +41,29 @@
         enctype="text/plain"
       >
         <div class="row">
+          <div class="col-3">
+            Title of request:<span class="required"> *</span>
+          </div>
+          <div class="col-9">
+            <input
+              class="form-control"
+              name="request-title"
+              type="text"
+              id="request-title"
+              placeholder="e.g. training event for ..."
+            />
+          </div>
+        </div>
+        <hr />
+        <h2>Determination fields</h2>
+
+        <div class="row">
           <div class="col-6">
-            Were you redirected by Global Supplier Setup Team?
+            Were you redirected by Global Supplier Setup Team?<span
+              class="required"
+            >
+              *</span
+            >
           </div>
           <div class="col-2">
             <input
@@ -67,7 +88,7 @@
 
         <div class="row" id="gs-setup-input">
           <div class="col-3 tip">
-            Case No.:
+            Case No.:<span class="required"> *</span>
             <i class="far fa-question-circle" id="tip"
               ><span class="tooltiptext"
                 >Can be found within the subject <br />of your email
@@ -88,7 +109,7 @@
         </div>
         <div class="row">
           <div class="col-3">
-            Purchasing Unit:
+            Purchasing Unit:<span class="required"> *</span>
             <i class="far fa-question-circle" id="tip"
               ><span class="tooltiptext"
                 >Country, for which <br />goods or services <br />are
@@ -98,7 +119,7 @@
           </div>
           <div class="col-3">
             <select
-              class="form-control"
+              class="form-select"
               name="purchasing-unit"
               id="purchasing-unit"
             >
@@ -110,7 +131,7 @@
             </select>
           </div>
           <div class="col-3">
-            Payment process:
+            Payment process:<span class="required"> *</span>
             <i class="far fa-question-circle" id="tip"
               ><span class="tooltiptext"
                 >If redirected by the Global Supplier Setup team -<br />
@@ -123,7 +144,7 @@
           </div>
           <div class="col-3">
             <select
-              class="form-control"
+              class="form-select"
               name="payment-process"
               id="payment-process"
             >
@@ -133,27 +154,17 @@
             </select>
           </div>
         </div>
-
-      <div class="alert-parent express-pay-us">
-        <div class="row alert express-pay-us">
-          <div class="col-12">There has been no change in the ExpressPay process for United States.
-          <br> Please follow <a href="#">this link</a> in order to be redirected to the valid ExpressPay Intake Forms for US.
-        </div>
-        </div>
-      </div>
-        
-        <div class="row">
-          <div class="col-3">Title of request:</div>
-          <div class="col-9">
-            <input
-              class="form-control"
-              name="request-title"
-              type="text"
-              id="request-title"
-              placeholder="e.g. training event for ..."
-            />
+        <div class="alert-parent express-pay-us">
+          <div class="row alert express-pay-us">
+            <div class="col-12">
+              There has been no change in the ExpressPay process for United
+              States. <br />
+              Please follow <a href="#">this link</a> in order to be redirected
+              to the valid ExpressPay Intake Forms for US.
+            </div>
           </div>
         </div>
+
         <hr />
         <h2>Supplier & Payment Information</h2>
         <div class="row express-pay">
@@ -179,7 +190,6 @@
           </div>
         </div>
 
-     
         <div class="row candex">
           <div class="col-6">Supplier confirmed acceptance of comission?</div>
           <div class="col-2">
@@ -204,7 +214,11 @@
         </div>
 
         <div class="row express-pay">
-          <div class="col-6">Supplier's method of Credit Card acceptance</div>
+          <div class="col-6">
+            Supplier's method of Credit Card acceptance<span class="required">
+              *</span
+            >
+          </div>
           <div class="col-6">
             <select class="form-control" id="payment-method">
               <option value="" disabled selected>Choose...</option>
@@ -216,8 +230,10 @@
         </div>
 
         <div class="row">
-          <div class="col-6">Supplier legal entity name:</div>
-          <div class="col-6">
+          <div class="col-3">
+            Supplier legal entity name:<span class="required"> *</span>
+          </div>
+          <div class="col-9">
             <input
               class="form-control"
               name="supplier-name"
@@ -229,48 +245,87 @@
         </div>
 
         <div class="row">
-          <div class="col-2">Supplier Country:</div>
-          <div class="col-4">
+          <div class="col-3">
+            Supplier Country:<span class="required"> *</span>
+          </div>
+          <div class="col-5">
             <input
               class="form-control"
               name="supplier-country"
               id="supplier-country"
               list="countries"
+              placeholder="Start typing..."
               autocomplete="off"
-            >
-            <datalist id="countries">
-              <option>United Kingdom</option>
-              <option>United States</option>
-              <option>Singapore</option>
-              <option>Mexico</option>
-            </datalist>
+            />
+            <datalist id="countries"> </datalist>
           </div>
+          <div class="col-2">Currency:<span class="required"> *</span></div>
           <div class="col-2">
-            Currency:
-          </div>
-          <div class="col-4">
-            <select class="form-control" name="currency" id="currency">
-              
-            </select>
+            <select class="form-select" name="currency" id="currency"></select>
           </div>
         </div>
 
-        <br>
-
-
+        <hr />
         <div class="row">
-          <div class="col-2">Contact person:</div>
+          <div class="col-2">
+            Contact person:<span class="required"> *</span>
+          </div>
           <div class="col-4">
             <input
               class="form-control"
-              name="contact-name"
+              name="contact-name-first"
               type="text"
-              id="contact-name"
-              placeholder="Name Surname"
+              id="contact-name-first"
+              placeholder="Name"
               autocomplete="off"
             />
           </div>
-          <div class="col-2">Contact email:</div>
+          <div class="col-6">
+            <input
+              class="form-control"
+              name="contact-name-last"
+              type="text"
+              id="contact-name-last"
+              placeholder="Surname"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">Contact tel.:<span class="required"> *</span></div>
+          <div class="col-4">
+            <select
+              class="form-select"
+              name="contact-tel-code"
+              id="tel-codes-list"
+            ></select>
+          </div>
+
+          <div class="col-3">
+            <input
+              class="form-control"
+              name="contact-tel"
+              id="contact-tel"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="col-1">Ext.:</div>
+          <div class="col-2">
+            <input
+              class="form-control"
+              name="contact-tel-ext"
+              id="contact-tel-ext"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            Contact email:<span class="required"> *</span>
+          </div>
           <div class="col-4">
             <input
               class="form-control"
@@ -281,19 +336,7 @@
               autocomplete="off"
             />
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-2">Contact tel.:</div>
-          <div class="col-4">
-            <input
-              class="form-control"
-              name="contact-tel"
-              id="contact-tel"
-              type="tel"
-              autocomplete="off"
-            />
-          </div>
           <div class="col-2">Website:</div>
           <div class="col-4">
             <input
@@ -307,33 +350,38 @@
           </div>
         </div>
 
-<br>
+        <hr />
         <div class="row">
-          <div class="col-2">Invoice No.:</div>
+          <div class="col-2">Invoice No.:<span class="required"> *</span></div>
           <div class="col-4">
             <input
               class="form-control"
               name="invoice-number"
               id="invoice-number"
               autocomplete="off"
+            />
+          </div>
+          <div class="col-2 express-pay">
+            Sales Order:
+            <i class="far fa-question-circle" id="tip"
+              ><span class="tooltiptext"
+                ><strong>Supplier</strong>'s sales order #,<br />
+                if available as per invoice</span
+              ></i
             >
           </div>
-          <div class="col-2">Sales Order: <i class="far fa-question-circle" id="tip"
-              ><span class="tooltiptext"
-                ><strong>Supplier</strong>'s sales order #,<br /> if available as per invoice</span
-              ></i></div>
-          <div class="col-4">
+          <div class="col-4 express-pay">
             <input
               class="form-control"
               name="sales-order-number"
               id="sales-order-number"
               autocomplete="off"
-            >
+            />
           </div>
-        </div>  
 
-        <div class="row">
-          <div class="col-2">Invoice Issued:</div>
+          <div class="col-2">
+            Invoice Issued:<span class="required"> *</span>
+          </div>
           <div class="col-4">
             <input
               class="form-control"
@@ -341,42 +389,30 @@
               id="invoice-date-issued"
               placeholder="mm/dd/yyyy"
               autocomplete="off"
-            >
+            />
           </div>
-          <div class="col-2">Invoice Received:</div>
-          <div class="col-4">
+          <div class="col-2 express-pay">Invoice Received:</div>
+          <div class="col-4 express-pay">
             <input
               class="form-control"
               name="invoice-date-received"
               id="invoice-date-received"
               placeholder="mm/dd/yyyy"
               autocomplete="off"
-            >
+            />
           </div>
-        </div>  
+        </div>
 
-        <br>
-
-
-
-        
-
-        <!--          
-          <div class="col-2">
-            <select class="form-control" name="currency" id="currency">
-              <option value="GBP">GBP</option>
-              <option value="USD">USD</option>
-              <option value="SGD">SGD</option>
-              <option value="Option 4"></option>
-              <option value="Option 5"></option>
-            </select>
-          </div>
-        -->
         <hr />
+
         <h2>Description of Goods or Services</h2>
 
         <div class="row">
-          <div class="col-4">Brief description of goods / service:</div>
+          <div class="col-4">
+            Brief description of goods / service:<span class="required">
+              *</span
+            >
+          </div>
           <div class="col-8">
             <input
               class="form-control"
@@ -387,42 +423,47 @@
             />
           </div>
         </div>
+
         <div class="row">
-          <div class="col-4">Item category and commodity:</div>
+          <div class="col-4">
+            Item category and commodity:<span class="required"> *</span>
+          </div>
           <div class="col-8">
             <input
               class="form-control"
               name="category-and-commodity"
               id="category-and-commodity"
-              list = "itemCategoryCommodityOptions"
-              placeholder="Start typying here..."
+              list="itemCategoryCommodityOptions"
+              placeholder="Start typing..."
               autocomplete="off"
             />
-              <datalist id="itemCategoryCommodityOptions">
-                <option value="Category1 || Item 1"></option>
-                <option value="Category1 || Item 2"></option>
-                <option value="Category1 || Item 3"></option>
-                <option value="Category1 || Item 4"></option>
-                <option value="Category2 || Item 1"></option>
-                <option value="Category2 || Item 2"></option>
-                <option value="Category2 || Item 3"></option>
-                <option value="Category3 || Item 1"></option>
-                <option value="Category4 || Item 1"></option>
-              </datalist>
+            <datalist id="itemCategoryCommodityOptions">
+              <option value="Category1 || Item 1"></option>
+              <option value="Category1 || Item 2"></option>
+              <option value="Category1 || Item 3"></option>
+              <option value="Category1 || Item 4"></option>
+              <option value="Category2 || Item 1"></option>
+              <option value="Category2 || Item 2"></option>
+              <option value="Category2 || Item 3"></option>
+              <option value="Category3 || Item 1"></option>
+              <option value="Category4 || Item 1"></option>
+            </datalist>
           </div>
         </div>
 
-        <br>
+        <br />
 
         <div>Cost Center</div>
         <div>Cost Center Split</div>
         <div>+ Add Cost Center</div>
 
-        <br>
+        <br />
 
         <div class="row">
           <div class="col-2">
-            <label for="#total-net"> Net Amount: </label>
+            <label for="#total-net">
+              Net Amount:<span class="required"> *</span>
+            </label>
           </div>
           <div class="col-2">
             <input
@@ -433,7 +474,14 @@
             />
           </div>
           <div class="col-2">
-            <label for="#total-freight"> Shipping: </label>
+            <label for="#total-freight">
+              Shipping:<span class="required"> *</span>
+              <i class="far fa-question-circle" id="tip">
+                <span class="tooltiptext"
+                  >Specify 0 for no shipping charge</span
+                ></i
+              >
+            </label>
           </div>
           <div class="col-2">
             <input
@@ -445,7 +493,12 @@
             />
           </div>
           <div class="col-2">
-            <label for="#total-vat"> VAT amount: </label>
+            <label for="#total-vat">
+              VAT amount:<span class="required"> *</span>
+              <i class="far fa-question-circle" id="tip"
+                ><span class="tooltiptext">Specify 0 for no VAT</span></i
+              >
+            </label>
           </div>
           <div class="col-2">
             <input
@@ -458,7 +511,7 @@
           </div>
         </div>
 
-                <hr />
+        <hr />
         <h2>Payment summary (readable only):</h2>
 
         <div class="row">
@@ -473,8 +526,7 @@
           </div>
         </div>
 
-
-         <div class="row">
+        <div class="row">
           <div class="col-4">Your supplier will receive:</div>
           <div class="col-4 reference">
             <input
@@ -484,11 +536,14 @@
               disabled
             />
           </div>
-          <div class="col-2">Comission: <i class="far fa-question-circle" id="tip"
+          <div class="col-2">
+            Comission:
+            <i class="far fa-question-circle" id="tip"
               ><span class="tooltiptext"
                 >ExpressPay - 0 % <br />Candex - 3 %</span
-              ></i>
-            </div>
+              ></i
+            >
+          </div>
           <div class="col-2 reference">
             <input
               class="form-control"
@@ -498,11 +553,24 @@
             />
           </div>
         </div>
+
         <hr />
         <h2>Customer's Information</h2>
-        <div>Individual you are submitting the request on behalf of?</div>
+        <div>
+          Individual you are submitting the request on behalf of?
+          <i class="far fa-question-circle" id="tip"
+            ><span class="tooltiptext"
+              >Specify your details <br />if submitting on behalf of
+              yourself</span
+            ></i
+          >
+        </div>
         <div class="row">
-          <div class="col-2"><label for="#SID-input"> SID: </label></div>
+          <div class="col-2">
+            <label for="#SID-input">
+              SID:<span class="required"> *</span>
+            </label>
+          </div>
           <div class="col-2">
             <input
               class="form-control"
@@ -512,7 +580,7 @@
               placeholder="A123456"
             />
           </div>
-          <div class="col-2">Email:</div>
+          <div class="col-2">Email:<span class="required"> *</span></div>
           <div class="col-6">
             <input
               class="form-control"
@@ -523,9 +591,12 @@
             />
           </div>
         </div>
-        <br />
+
+        <hr />
         <div class="row">
-          <div class="col-4">Customer's Legal Entity:</div>
+          <div class="col-4">
+            Customer's Legal Entity:<span class="required"> *</span>
+          </div>
           <div class="col-8">
             <input
               class="form-control"
@@ -534,15 +605,14 @@
               id="jpmc-le"
               autocomplete="off"
               placeholder="Choose..."
-            /><datalist id="le-options">
-              
-            </datalist>
+            /><datalist id="le-options"> </datalist>
           </div>
         </div>
-        
 
         <div class="row">
-          <div class="col-4">Street and building details:</div>
+          <div class="col-4">
+            Street and building details:<span class="required"> *</span>
+          </div>
           <div class="col-8">
             <input
               class="form-control"
@@ -553,101 +623,55 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-2">City:</div>
-          <div class="col-4">
-            <input
-              class="form-control"
-              type="text"
-              name="shipto-city"
-              id="shipto-city"
-            />
-          </div>
-          <div class="col-2">Zip Code:</div>
-          <div class="col-4">
-            <input
-              class="form-control"
-              type="text"
-              name="shipto-zipcode"
-              id="shipto-zipcode"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-2">State:</div>
-          <div class="col-4">
-            <input
-              class="form-control"
-              type="text"
-              name="shipto-state"
-              id="shipto-state"
-            />
-          </div>
-
-          <div class="col-2">Country:</div>
-          <div class="col-4">
-            <input
-              class="form-control"
-              type="text"
-              name="shipto-country"
-              id="shipto-country"
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-2"></div>
-          <div class="col-2"></div>
-          <div class="col-2"></div>
-        </div>
         <hr />
 
         <h2>Additional Information</h2>
 
-        <div>Would you like to add a Watcher to this request?</div>
+        <div class="row">
+          <div class="col-6">
+            Would you like to add a Watcher to this request?
+          </div>
+          <div class="col-2">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="watcher"
+              id="watcher-yes"
+              value="yes"
+            /><label for="#watcher-yes">Yes</label>
+          </div>
+          <div class="col-2">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="watcher"
+              id="watcher-no"
+              value="no"
+              checked
+            />
+            <label for="#watcher-no">No</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            SID / SIDs of watchers to be added (separated by comma):
+          </div>
+          <div class="col-6">
+            <input
+              class="form-control"
+              name="case"
+              type="text"
+              id="case"
+              placeholder="A123456, B123456, C123456"
+            />
+          </div>
+        </div>
 
-        <div>Does this transaction need to reference any of the following?</div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="compass"
-          />
-          <label for="#compass"> Existing Compass Engagement </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="po-express"
-          />
-          <label for="#po-express"> Existing PO Express Engagement </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="jpmc-contract"
-          />
-          <label for="#jpmc-contract"> Valid Contract </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="jpmc-initiative"
-          />
-          <label for="#jpmc-initiative">
-            Corporate wide purchasing initiative
-          </label>
-        </div>
+        <hr />
         <div class="mb-3">
-          <label for="formFile" class="form-label">your invoice here</label>
+          <label for="formFile" class="form-label"
+            >Attach your invoice here:</label
+          >
           <input
             class="form-control"
             type="file"
@@ -655,15 +679,17 @@
             id="formFile"
           />
         </div>
-
         <div class="row">
-          <div class="col-4">Submitter's comments:</div>
-          <div class="col-8">
+          <div class="col">Submitter's comments:</div>
+        </div>
+        <div class="row">
+          <div class="col">
             <textarea
               class="form-control"
               name="comments"
               id="comments"
               aria-label="With textarea"
+              placeholder="Anything you would like to add. Should we refer to e.g. Existing Compass Engagement, Existing PO Express Engagement, Valid Contract etc. - kindly specify it here."
             ></textarea>
           </div>
         </div>
@@ -684,8 +710,6 @@
         >
           Submit test 2
         </button>
-
-  
       </form>
     </div>
 
