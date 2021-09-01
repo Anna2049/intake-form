@@ -2,64 +2,154 @@ function clear() {
   window.localStorage.clear();
   console.log(localStorage);
 }
+try {
+  function saveInputValues() {
+    localStorage.setItem(
+      "requestTitle",
+      document.getElementById("request-title").value
+    );
+    localStorage.setItem("case", document.getElementById("case").value);
+    localStorage.setItem(
+      "PU",
+      document.getElementById("purchasing-unit").value
+    );
+    localStorage.setItem(
+      "process",
+      document.getElementById("payment-process").value
+    );
+    localStorage.setItem(
+      "paymentMethod",
+      document.getElementById("payment-method").value
+    );
+    localStorage.setItem(
+      "supplierName",
+      document.getElementById("supplier-name").value
+    );
+    localStorage.setItem(
+      "supCountry",
+      document.getElementById("supplier-country").value
+    );
+    localStorage.setItem("currency", document.getElementById("currency").value);
+    localStorage.setItem(
+      "supContactName",
+      document.getElementById("contact-name-first").value
+    );
+    localStorage.setItem(
+      "supContactSurname",
+      document.getElementById("contact-name-last").value
+    );
+    localStorage.setItem(
+      "supTelCode",
+      document.getElementById("contact-tel-code").value
+    );
+    localStorage.setItem(
+      "supTel",
+      document.getElementById("contact-tel").value
+    );
+    localStorage.setItem(
+      "supTelExt",
+      document.getElementById("contact-tel-ext").value
+    );
+    localStorage.setItem(
+      "supEmail",
+      document.getElementById("contact-email").value
+    );
+    localStorage.setItem(
+      "supWebsite",
+      document.getElementById("contact-website").value
+    );
+    localStorage.setItem(
+      "invoiceNumber",
+      document.getElementById("invoice-number").value
+    );
+    localStorage.setItem(
+      "salesOrder",
+      document.getElementById("sales-order-number").value
+    );
+    localStorage.setItem(
+      "invDateIssued",
+      document.getElementById("invoice-date-issued").value
+    );
+    localStorage.setItem(
+      "invDateReceived",
+      document.getElementById("invoice-date-received").value
+    );
 
-function saveInputValues() {
-  localStorage.setItem(
-    "requestTitle",
-    document.getElementById("request-title").value
-  );
-  localStorage.setItem(
-    "paymentMethod",
-    document.getElementById("payment-method").value
-  );
-  localStorage.setItem(
-    "supplierName",
-    document.getElementById("supplier-name").value
-  );
-  localStorage.setItem(
-    "supplierCountry",
-    document.getElementById("supplier-country").value
-  );
-  localStorage.setItem("currency", document.getElementById("currency").value);
-  localStorage.setItem("totalNet", document.getElementById("total-net").value);
-  localStorage.setItem(
-    "totalFreight",
-    document.getElementById("total-freight").value
-  );
-  localStorage.setItem("totalVat", document.getElementById("total-vat").value);
-  localStorage.setItem("oboSID", document.getElementById("obo-sid").value);
-  localStorage.setItem("oboEmail", document.getElementById("obo-email").value);
-  localStorage.setItem("jpmcLE", document.getElementById("jpmc-le").value);
-  localStorage.setItem(
-    "shiptoCountry",
-    document.getElementById("shipto-country").value
-  );
-  localStorage.setItem(
-    "shiptoStreet",
-    document.getElementById("shipto-street").value
-  );
-  localStorage.setItem(
-    "shiptoCity",
-    document.getElementById("shipto-city").value
-  );
-  localStorage.setItem(
-    "shiptoZipcode",
-    document.getElementById("shipto-zipcode").value
-  );
-  localStorage.setItem(
-    "shiptoState",
-    document.getElementById("shipto-state").value
-  );
-  localStorage.setItem(
-    "shiptoCountry",
-    document.getElementById("shipto-country").value
-  );
-  localStorage.setItem("comments", document.getElementById("comments").value);
+    localStorage.setItem(
+      "itemDescr",
+      document.getElementById("brief-description").value
+    );
+    localStorage.setItem(
+      "categoryCommodity",
+      document.getElementById("category-and-commodity").value
+    );
 
-  console.log(localStorage);
-  alert(
-    "Your input values have been saved. You can restore them or clean up later."
-  );
+    localStorage.setItem(
+      "totalNet",
+      document.getElementById("total-net").value
+    );
+    localStorage.setItem(
+      "totalFreight",
+      document.getElementById("total-freight").value
+    );
+    localStorage.setItem(
+      "totalVat",
+      document.getElementById("total-vat").value
+    );
+
+    localStorage.setItem(
+      "ccSplit",
+      document.getElementById("cost-center-split").value
+    );
+    localStorage.setItem(
+      "ccAmount",
+      document.getElementById("cost-center-amount").value
+    );
+    localStorage.setItem(
+      "ccDetails",
+      document.getElementById("cost-center-details").value
+    );
+
+    localStorage.setItem("oboSID", document.getElementById("obo-sid").value);
+    localStorage.setItem(
+      "oboEmail",
+      document.getElementById("obo-email").value
+    );
+    localStorage.setItem("jpmcLE", document.getElementById("jpmc-le").value);
+    localStorage.setItem(
+      "shiptoCountry",
+      document.getElementById("shipto-country").value
+    );
+    localStorage.setItem(
+      "shiptoStreet",
+      document.getElementById("shipto-street").value
+    );
+    localStorage.setItem(
+      "shiptoCity",
+      document.getElementById("shipto-city").value
+    );
+    localStorage.setItem(
+      "shiptoZipcode",
+      document.getElementById("shipto-zipcode").value
+    );
+    localStorage.setItem(
+      "shiptoState",
+      document.getElementById("shipto-state").value
+    );
+    localStorage.setItem(
+      "shiptoCountry",
+      document.getElementById("shipto-country").value
+    );
+    localStorage.setItem("comments", document.getElementById("comments").value);
+
+    console.log(localStorage);
+    alert(
+      "Your input values have been saved. You can restore them or clean up later."
+    );
+  }
+} catch (e) {
+  console.error(e.name);
+  console.error(e.message);
 }
 function sendEmail() {
   let supplier = `ABC company`;
@@ -122,9 +212,9 @@ function updateGrandTotal() {
   let totalReceive = document.getElementById("total-receive");
   let comissionAmount = document.getElementById("comission");
   let comissionPercent =
-    optionsTree[`${document.getElementById("payment-process").value}`][
-      `comission`
-    ];
+    paymentProcessDetails[
+      `${document.getElementById("payment-process").value}`
+    ][`comission`];
   console.log(comissionPercent);
 
   let totalPaymentAmount =
@@ -136,9 +226,9 @@ function updateGrandTotal() {
   console.log(
     parseInt(
       parseInt(
-        optionsTree[`${document.getElementById("payment-process").value}`][
-          `comission`
-        ]
+        paymentProcessDetails[
+          `${document.getElementById("payment-process").value}`
+        ][`comission`]
       )
     )
   );
@@ -184,9 +274,9 @@ function populateDeterminationFieldsDependants() {
 
   console.log(`${paymentProcess} ${purchasingUnit}`);
   let currencyOptions =
-    optionsTree[`${paymentProcess}`][`purchasing_units`][`${purchasingUnit}`][
-      `currencies`
-    ];
+    paymentProcessDetails[`${paymentProcess}`][`purchasing_units`][
+      `${purchasingUnit}`
+    ][`currencies`];
   console.log(currencyOptions);
   let legalEntitiesOptions =
     processesByPU[`${purchasingUnit}`][`legal_entities`];
@@ -197,7 +287,7 @@ function populateDeterminationFieldsDependants() {
   shiptoCountry.value = countryOption;
   shiptoCountry.disabled = true;
 
-  let comission = optionsTree[`${paymentProcess}`][`comission`];
+  let comission = paymentProcessDetails[`${paymentProcess}`][`comission`];
   comissionAmount.placeholder = `${comission * 100} %`;
 
   let costCenterOptions = processesByPU[`${purchasingUnit}`][`cost_centers`];
@@ -255,21 +345,17 @@ for (var i = 0; i < radiosTeamRedirected.length; i++) {
   };
 }
 
-// WORKING HERE
-
-/*
 let radiosCostCenterSplit = document.getElementsByName("cost-center-split");
 for (var i = 0; i < radiosCostCenterSplit.length; i++) {
-  radiosTeamRedirected[i].onclick = function () {
-    if (document.getElementById("cost-center-split").checked) {
-      document.getElementById("cc-split-quantity").style.display = "flex";
+  radiosCostCenterSplit[i].onclick = function () {
+    if (document.getElementById("cost-center-split-no").checked) {
+      document.getElementById("buttons-cc").style.display = "none";
     } else if (document.getElementById("cost-center-split-yes").checked) {
-      document.getElementById("cc-split-quantity").style.display = "none";
+      document.getElementById("buttons-cc").style.display = "inline-block";
     } else {
     }
   };
 }
-*/
 
 const totalPaymentComponents = [
   document.getElementById("currency"),
@@ -426,15 +512,12 @@ const processesByPU = {
   },
 };
 
-const optionsTree = {
+const paymentProcessDetails = {
   express_pay: {
     comission: 0,
     purchasing_units: {
       SAPGB: {
-        country: "United Kingdom",
         currencies: ["GBP"],
-        legal_entities: ["UK LE 1", "UK LE 2", "UK LE 3", "UK LE 4", "UK LE 5"],
-        //cost_centers: ["UK CC 1", "UK CC 2", "UK CC 3", "UK CC 4", "UK CC 5"],
       },
     },
   },
@@ -442,24 +525,16 @@ const optionsTree = {
     comission: 0.03,
     purchasing_units: {
       SAP: {
-        country: "United States",
         currencies: ["USD"],
-        legal_entities: ["US LE 1", "US LE 2", "US LE 3", "US LE 4", "US LE 5"],
       },
       SAPGB: {
-        country: "United Kingdom",
         currencies: ["GBP"],
-        legal_entities: ["UK LE 1", "UK LE 2", "UK LE 3", "UK LE 4", "UK LE 5"],
       },
       SAPMX: {
-        country: "Mexico",
         currencies: ["MXN"],
-        legal_entities: ["MX LE 1", "MX LE 2", "MX LE 3", "MX LE 4", "MX LE 5"],
       },
       SAPSG: {
-        country: "Singapore",
         currencies: ["SGD"],
-        legal_entities: ["SG LE 1", "SG LE 2", "SG LE 3", "SG LE 4", "SG LE 5"],
       },
     },
   },
@@ -750,38 +825,34 @@ countriesAndTelCodes.forEach(function (arrayItem) {
   countries.appendChild(option);
 });
 
-/*
+function cloneRowCC() {
+  ccQuantity = ccQuantity + 1;
+  console.log(ccQuantity);
+  let clone = document.getElementById("cc-row-1").cloneNode(true);
+  clone.setAttribute("id", `cc-row-${ccQuantity}`);
 
-countriesAndTelCodes.forEach(function (item) {
-  //countriesAndTelCodesItem = countriesAndTelCodes[i];
-  var option = document.createElement("option");
-  option.innerHTML = item.tel_code.name;
-  formElement.appendChild(option);
-});
-
-purchasingUnitOptions.addEventListener("change", function (event) {
-  x = processesByPU[`${event.target.value}`];
-  console.log(x);
-  let formElement = document.getElementById("payment-process");
-  formElement.innerHTML = ``;
-  x.forEach(function (item) {
-    var option = document.createElement("option");
-    option.value = item.value;
-    option.innerHTML = item.name;
-    formElement.appendChild(option);
-  });
-
-
-function blabla() {
-  telCodes[i].forEach((item) => console.log(item));
+  //x.setAttribute("id", `cc-row-${ccQuantity}`);
+  document.getElementById("cc-container").appendChild(clone);
+  x = document.getElementsByName("cost-center-amount-1")[1];
+  x.setAttribute("id", `cost-center-amount-${ccQuantity}`);
+  x.setAttribute("name", `cost-center-amount-${ccQuantity}`);
+  y = document.getElementsByName("cost-center-details-1")[1];
+  y.setAttribute("name", `cost-center-details-${ccQuantity}`);
+  return ccQuantity;
 }
-
-}
-
-function bla() {
-  alert("hello");
-  for (var i = 0; i < telCodes.length; i++) {
-    console.log(telCodes[i]);
+function removeRowCC() {
+  if (ccQuantity !== 1) {
+    document
+      .getElementById("cc-container")
+      .removeChild(document.getElementById(`cc-row-${ccQuantity}`));
+    ccQuantity = ccQuantity - 1;
+    return ccQuantity;
+  } else {
   }
 }
-*/
+
+let ccQuantity = 1;
+let buttonAddCC = document.getElementById("btn-add-cc");
+let buttonRemoveCC = document.getElementById("btn-remove-cc");
+buttonAddCC.addEventListener("click", cloneRowCC);
+buttonRemoveCC.addEventListener("click", removeRowCC);

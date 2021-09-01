@@ -528,19 +528,49 @@
               id="cost-center-split-yes"
               value="yes"
             />
-            <label for="#cost-center-split-yes">apply split accounting</label>
+            <label for="#cost-center-split-yes"
+              >apply split accounting
+              <span id="buttons-cc">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-add"
+                  id="btn-add-cc"
+                >
+                  +
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger btn-remove"
+                  id="btn-remove-cc"
+                >
+                  —
+                </button></span
+              ></label
+            >
           </div>
         </div>
-        <div class="row">
-          <div class="col-4">Business Unit:</div>
-          <div class="col-8">
-            <select
-              class="form-select"
-              name="cost-center-details"
-              id="cc-options"
-            ></select>
+        <div id="cc-container">
+          <div class="row" id="cc-row-1">
+            <div class="col-2">Amount:</div>
+            <div class="col-2">
+              <input
+                class="form-control"
+                name="cost-center-amount-1"
+                id="cost-center-amount-1"
+                placeholder="0.00"
+              />
+            </div>
+            <div class="col-2">Business Unit:</div>
+            <div class="col-6">
+              <select
+                class="form-select"
+                name="cost-center-details-1"
+                id="cc-options"
+              ></select>
+            </div>
           </div>
         </div>
+
         <hr />
         <h2>Payment summary (readable only):</h2>
 
